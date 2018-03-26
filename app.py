@@ -92,7 +92,7 @@ def statistics():
         calls_per_hour[index] /= num_days
         index += 1
 
-    # Find all the calls that are specifically for Fie
+    # Find all the calls that are specifically for Fire
     possible_calls = db.calls.find({"call_type_group": "Fire"})
     # Loop through these calls. Add up the number of calls that are fire related for each fire prevention district
     for call in possible_calls:

@@ -92,4 +92,4 @@ with open('sfpd-dispatch/sfpd_dispatch_data_subset.csv', newline='') as csvfile:
         else:
             row['neighborhood_district'] = None
 
-        # db.calls.insert_one(row)
+        db.calls.insert_one(row)
