@@ -1,0 +1,40 @@
+.descriptor {
+    font-size: 13px;
+    text-align: center;
+}
+
+.data {
+    font-size: 30px;
+    text-align: center;
+}
+
+.border {
+    content: "";
+    position: absolute;
+    left: 0;
+    height: 65px;
+    border-left: 2px solid #919aa1 !important;
+    margin-top: 10px;
+}
+
+.underline {
+    content: "";
+    border-top: 2px solid #919aa1 !important;
+    width: 85%;
+    margin: 0 auto;
+    margin-bottom: 5px;
+}
+
+.jumbotron {
+    width: 95%;
+    margin: 0 auto;
+    border-radius: 12px;
+    padding: 2rem 1rem;
+    margin-bottom: 25px;
+}
+
+.about {
+    width: 85%;
+    margin: 0 auto;
+    text-align: center;
+}

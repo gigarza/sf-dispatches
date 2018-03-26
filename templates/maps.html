@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+
+<head>
+    <!-- Import bootstrap -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootswatch/4.0.0-beta.3/lux/bootstrap.min.css" rel="stylesheet">
+    <!-- Connect to stylesheet -->
+     <link href="{{ url_for("static", filename="css/maps.css") }}" rel="stylesheet">
+    <!-- Set page title -->
+    <title>Maps | SF Dispatches</title>
+</head>
+
+<body>
+    <!-- Navigation Bar to lead back to homepage -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <a class="navbar-brand" href="{{ url_for("homepage") }}" style="margin: 0 auto;">San Francisco Dispatches</a>
+    </nav>
+
+    <!-- Title of page -->
+    <h1 style="margin-top: 25px; text-align: center; font-size: 50px;">Maps</h1>
+
+    <!-- Tabs to show different information on page -->
+    <ul class="nav nav-tabs">
+      <li class="nav-item">
+        <a class="nav-link active show" data-toggle="tab" href="#dis_times">Dispatch Times</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" href="#heatmap">Heat Map</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" href="#safe">Safe Neighborhoods</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" href="#increase">Increasing Dispatches</a>
+      </li>
+    </ul>
+
+
+    <div id="myTabContent" class="tab-content">
+      <!-- Content for the Dispatch Times tab -->
+      <div class="tab-pane fade active show" id="dis_times">
+          <div class="container-fluid">
+              <div class="row">
+                  <div class=col-md-6>
+                      <div id="map" class="map"></div>
+                  </div>
+                  <div class=col-md-6>
+                      <h3>Dispatch Times</h3>
+                      <div class="underline"></div>
+                      <p>By looking at the data, we can begin to analyze which
+                          areas in San Francisco seem to take the longest time to dispatch on average. On this map, the
+                          zipcodes that are highlighted are the top 3 zipcodes which take the longest time from the
+                          call received until the dispatch is set. These zipcodes are: 94127, 94105, and 94129. The
+                          time to dispatch in these areas could be reduced by increasing the speed with which the
+                          dispatch is requested in the system. This could be done with training those who put the calls
+                          into the system, or training the dispatch team to respond quicker.</p>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+       <!-- Content for the Heat Map tab -->
+       <div class="tab-pane fade" id="heatmap">
+           <div class="container-fluid">
+               <div class="row">
+                   <div class=col-md-6>
+                       <div id="heat_map" class="map"></div>
+                   </div>
+                   <div class=col-md-6>
+                       <h3>Heat Map</h3>
+                       <div class="underline"></div>
+                       <p>This is a heat map to show the frequency of calls across the city. The areas of red are where
+                       the most calls generally occur, while those in the lighter shade of green, or even not overlaid
+                       at all do not receive that many calls. We can see that north-west area of the city seems to
+                       receive the greatest frequency of calls, while reaching out to the south-east corner is the least
+                       amount of calls.</p>
+                   </div>
+               </div>
+           </div>
+       </div>
+
+       <!-- Content for the Safest Neighborhoods tab -->
+       <div class="tab-pane fade" id="safe">
+           <div class="container-fluid">
+               <div class="row">
+                   <div class=col-md-6>
+                       <div id="neighborhood_map" class="map"></div>
+                   </div>
+                   <div class=col-md-6>
+                       <h3>Safe Neighborhoods</h3>
+                       <div class="underline"></div>
+                       <p>This is a map to show the safest neighborhoods in the San Francisco area. We are able to
+                       figure out the safest city by looking at the different types of units related to crime and the
+                       average number of calls for each neighborhood. The most calm and safe neighborhoods, which are
+                       shown in red on the  map, are Seacliff, Lincoln Park, and McLaren Park.</p>
+                   </div>
+               </div>
+           </div>
+       </div>
+
+       <!-- Content for the Increasing Dispatches tab -->
+       <div class="tab-pane fade" id="increase">
+           <div class="container-fluid">
+               <div class="row">
+                   <div class=col-md-6>
+                       <div id="increase_map" class="map"></div>
+                   </div>
+                   <div class=col-md-6>
+                       <h3>Increasing Dispatches</h3>
+                       <div class="underline"></div>
+                       <p>This is a map to shows the areas with the greatest increase in dispatch calls. Although we can
+                           tell the normal frequency of calls in an area from the Heat Map, it is important to look into
+                           the future and begin to see which areas are increasing the fastest in number of dispatch
+                           calls. The zipcodes that are increasing their frequency the fastest are 94123, 94134, and
+                           94112. To help with the rate of increasing calls, I would increase the number of possible
+                           dispatchers in the area, and I would specifically increase engine as it seems to be the most
+                           general common dispatch in the area.</p>
+                   </div>
+               </div>
+           </div>
+       </div>
+    </div>
+
+    <!-- Send data & results to javascript -->
+    <script>var highest={{ times|tojson }}</script>
+    <script>var lat_long={{ lat_longs|tojson }}</script>
+    <script>var safest ={{ safest|tojson }}</script>
+    <script>var increases={{ increases|tojson }}</script>
+    <!-- Import JQuery, Bootstrap, and the Google Maps API -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>;
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAggOSRIfpvptp6aGTZSI4wS9RsA1IHNGI&callback=initMap&libraries=visualization">
+    </script>
+    <!-- Connect to javascript files -->
+    <script src="{{ url_for("static", filename="js/maps.js") }}"></script>
+
+</body>
+
+</html>

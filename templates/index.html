@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+
+<head>
+    <!-- Connect the style sheet -->
+    <link href="{{ url_for("static", filename="css/index.css") }}" rel="stylesheet">
+
+    <!-- Set title for the page -->
+    <title>Home | SF Dispatches</title>
+</head>
+
+<body>
+    <div style="font-family: Palatino;">
+        <!-- Main title and description -->
+        <p id="main_head">San Francisco Dispatches</p>
+        <h2 id="below_head">Data provided by the San Francisco Fire Department</h2>
+
+        <!-- Buttons that are links to rest of project pages -->
+        <a href="{{ url_for("statistics") }}" class="button">Statistics & Graphs</a>
+        <a href="{{ url_for("maps") }}" class="button">Informational Maps</a>
+        <a href="{{ url_for("interactive") }}" class="button">Most Likely Dispatch</a>
+    </div>
+</body>
+
+</html>

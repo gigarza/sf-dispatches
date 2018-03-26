@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+
+<head>
+    <!-- Import bootstrap and chartist -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootswatch/4.0.0-beta.3/lux/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
+    <!-- Connect to stylesheet -->
+    <link href="{{ url_for("static", filename="css/statistics.css") }}" rel="stylesheet">
+
+    <!-- Set page title -->
+    <title>Statistics | SF Dispatch</title>
+</head>
+
+<body>
+    <!-- Navigation Bar to lead back to homepage -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <a class="navbar-brand" href="{{ url_for("homepage") }}" style="margin: 0 auto;">San Francisco Dispatches</a>
+    </nav>
+
+    <!-- Title of page -->
+    <h1 style="margin-top: 25px; text-align: center; font-size: 50px;">Statistics</h1>
+
+    <!-- Various statistics from data -->
+    <div class="container-fluid">
+        <div class="row">
+            <div class=col-md-2>
+                <p class="descriptor">Number of Calls</p>
+                <p class="data">{{ num_calls }}</p>
+            </div>
+            <div class="col-md-2">
+                <div class="border"></div>
+                <p class="descriptor">Types of Calls</p>
+                <p class="data">{{ num_types }}</p>
+            </div>
+            <div class="col-md-2">
+                <div class="border"></div>
+                <p class="descriptor">Stations</p>
+                <p class="data">{{ stations }}</p>
+            </div>
+            <div class="col-md-2">
+                <div class="border"></div>
+                <p class="descriptor">Total Unit Types</p>
+                <p class="data">{{ unit_num }}</p>
+            </div>
+            <div class="col-md-2">
+                <div class="border"></div>
+                <p class="descriptor">Fire Prevention Districts</p>
+                <p class="data">{{ district_num }}</p>
+            </div>
+            <div class="col-md-2">
+                <div class="border"></div>
+                <p class="descriptor">Supervisor Districts</p>
+                <p class="data">{{ supervisors }}</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Visual Graph #1 -->
+    <div class="jumbotron">
+        <div class="container-fluid">
+            <div class ="row">
+                <div class="col-md-8">
+                    <div id="visual1" class="ct-chart ct-major-eleventh"></div>
+                </div>
+                <div class="col-md-4">
+                    <h2 style="text-align: center;">Average calls throughout day</h2>
+                    <div class="underline"></div>
+                    <p class="about">This graph shows the progress throughout the day on the number of calls that are
+                        received. We can see that around 9am, a spike of calls begins. This large amount of calls, at
+                        over 40 an hour, continues on until 8pm. These are generally considered 'day time' hours, and
+                        are the hours where it is most necessary to have a large amount of responders ready to dispatch.
+                        During the night hours/shifts, from 10pm-8am not as many dispatches will be needed.
+                        The hour with the most calls for dispatches is 4pm, whereas the hour with the least is 5am.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6">
+                <!-- Visual Graph #2 -->
+                <div class="jumbotron">
+                    <h3 style="text-align: center;">Fires per Station</h3>
+                    <div class="underline"></div>
+                    <p class="about">This graph shows the number of calls which are considered a fire call type that
+                        each of the fire prevention districts has received. We can see that districts 3 and 8 receive
+                        the most dispatch calls for fires, while districts 9 and 10 receive the least. Lastly, we can
+                        see there have been calls made that required dispatches that were outside all of these districts
+                        , or not input to the system of data.</p>
+                    <div id="visual2" class="ct-chart ct-major-eleventh ct-bar"></div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <!-- Visual Chart #3 -->
+                 <div class="jumbotron">
+                    <h3 style="text-align: center">Unit Types</h3>
+                     <div class="underline"></div>
+                     <p class="about">This chart shows how common each type of unit call is. We can see that medic and
+                        engine are the most common unit that is dispatched for these calls, while the least common unit
+                         is investigation.</p>
+                     <div id="visual3" class="ct-chart ct-pie ct-square"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Send data & results to javascript -->
+    <script>var calls ={{ calls|tojson }}</script>
+    <script>var districts ={{ district|tojson }}</script>
+    <script>var units ={{ units|tojson }}</script>
+    <!-- Import JQuery and Chartist -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
+    <!-- Connect to javascript files -->
+    <script src="{{ url_for("static", filename="js/chartist-plugin-axistitle.min.js") }}"></script>
+    <script src="{{ url_for("static", filename="js/statistics.js") }}"></script>
+</body>
+
+</html>

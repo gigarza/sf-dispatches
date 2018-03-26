@@ -1,0 +1,24 @@
+Stats Pie:
+https://stackoverflow.com/questions/35402143/using-chartist-js-how-do-you-change-the-color-of-the-stroke-for-a-donut-chart
+
+// function initMap() {
+//     var uluru = {lat: 37.7749, lng: -122.4194};
+//     var map = new google.maps.Map(document.getElementById('map'), {
+//       zoom: 11.7,
+//       center: uluru
+//     });
+//     map.addListener('click', function(e) {
+//         placeMarker(e.latLng, map);
+//     });
+// }
+//
+// function placeMarker(position, map) {
+//     if(marker != null){
+//         marker.setMap(null);
+//     }
+//     marker = new google.maps.Marker({
+//         position: position,
+//         map: map
+//     });
+//     map.panTo(position);
+// }

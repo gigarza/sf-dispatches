@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+
+<head>
+    <!-- Import bootstrap -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootswatch/4.0.0-beta.3/lux/bootstrap.min.css" rel="stylesheet">
+    <link href="../static/css/jquery.timepicker.min.css" rel="stylesheet">
+    <!-- Connect to stylesheet -->
+    <link href="{{ url_for("static", filename="css/which_dispatch.css") }}" rel="stylesheet">
+    <!-- Set page title -->
+    <title>SF Dispatches | Which Dispatch?</title>
+</head>
+
+<body>
+    <!-- Navigation Bar to lead back to homepage -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <a class="navbar-brand" href="{{ url_for("homepage") }}" style="margin: 0 auto;">San Francisco Dispatches</a>
+    </nav>
+
+    <!-- Title of page -->
+    <h1>Which Dispatch?</h1>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class=col-md-6>
+                <!-- User chooses location -->
+                <h5>Type in an address to choose a location:</h5>
+                <div id="map"></div>
+
+                <div id="floating-panel">
+                    <input id="address" type="textbox" value="San Francisco, CA">
+                    <input id="submit" type="button" value="Find">
+                </div>
+
+                <!-- User chooses time -->
+                <h5>Choose a time:</h5>
+                <input type="text" class="form-control" placeholder="Time Here" id="timeInput">
+                <button type="button" class="btn btn-outline-primary" id="timeButton">Set Current Time</button>
+            </div>
+
+            <div class="col-md-6">
+                <!-- Default description -->
+                <h3 id="header_result">Your result will appear here!</h3>
+                <div class="underline"></div>
+                <p style="width: 85%; text-align: center;margin: 0 auto;" id="body_result">Here you can find out what would be the most likely dispatch
+                    based on a location and time! First, type any address in San Francisco on the map. Then choose
+                    any time, based on a half-hour mark, or you can even use the current time. After clicking submit,
+                    the most likely dispatch based on your choices will pop up. In this location, you will get some
+                    information about that type of dispatch.</p>
+                <!-- Button to send the data to the files and get the result -->
+                <button class="btn btn-primary" onclick="submit()" style="display: block; margin: 0 auto; margin-top: 100px;">Submit</button>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Import JQuery, timepicker, and the Google Maps API -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=
+AIzaSyAggOSRIfpvptp6aGTZSI4wS9RsA1IHNGI&callback=initMap">
+    </script>
+    <script src="../static/js/jquery.timepicker.min.js"></script>
+    <!-- Connect to javascript files -->
+    <script src="{{ url_for("static", filename="js/which_dispatch.js") }}"></script>
+</body>
+
+</html>

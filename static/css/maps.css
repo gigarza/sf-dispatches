@@ -1,0 +1,35 @@
+/* Anytime '!important' is used, it is to override the previous style setting */
+
+.underline {
+    content: "";
+    border-top: 2px solid #919aa1 !important;
+    width: 85%;
+    margin: 0 auto;
+    margin-bottom: 5px;
+}
+
+.map {
+    height: 400px;
+    width: 85%;
+    margin: 0 auto;
+    margin-bottom: 30px;
+    margin-top: 20px;
+}
+
+.nav-item {
+    margin: 0 auto;
+}
+
+.row {
+    margin-top: 20px !important;
+}
+
+h3 {
+    text-align: center;
+}
+
+p {
+    width: 85%;
+    text-align: center;
+    margin: 0 auto;
+}
