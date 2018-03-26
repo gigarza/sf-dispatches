@@ -18,7 +18,7 @@ if os.path.isfile("config.json"):
         app.config[key] = conf[key]
     debug = True
 else:
-    req = ["mogno_user", "mongo_pass", "mongo_host"]
+    req = ["mongo_user", "mongo_pass", "mongo_host"]
     for key in req:
         val = os.environ.get(key, None)
         if val is None:
