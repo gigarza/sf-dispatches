@@ -2,3 +2,4 @@ flask
 pymongo
 shapely
 gunicorn
+dnspython==2.0.0
