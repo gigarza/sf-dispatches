@@ -26,7 +26,7 @@ else:
         app.config[key] = val
 
 # Get the database
-client = MongoClient('mongodb://'+app.config['mongo_user']+':'+app.config['mongo_pass']+'@'+app.config['mongo_host'])
+client = MongoClient('mongodb+srv://'+app.config['mongo_user']+':'+app.config['mongo_pass']+'@'+app.config['mongo_host']+'?retryWrites=true&w=majority')
 db = client.get_database()
 
 
